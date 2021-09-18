@@ -113,9 +113,29 @@ def calc_k_nearest_neighbors(data_NF, query_QF, K=1):
     neighb_QKF : 3D array, (n_queries, n_neighbors, n_feats) (Q, K, F)
         Entry q,k is feature vector of the k-th neighbor of the q-th query
     '''
-    neighbor_distances = {}
-    p_norm = lambda a, b, p: sum([(a[i] - b[i]) ** p for i in range(len(a))]) ** (1 / p)
-    a = [15. -90, 29]
-    b = [-1, -2, 3]
 
-    return p_norm(a, b, 2)
+    # Create dictionary to store map of k nearest neighbors
+    distance_map = {}
+
+    # Lambda function to calculate distance with any valid p-norm
+    p_norm = lambda a, b, p: sum([(a[i] - b[i]) ** p for i in range(len(a))]) ** (1 / p)
+
+    # Calculate kNN for each query in the query-set
+    # Estimated quadratic time complexity with naive kNN
+    for q_idx in range(len(query_QF)):
+        nearest_neighbors = {}
+        for d_idx in range(len(data_NF)):
+            # Use euclidean norm to measure similarity between vectors
+            nearest_neighbors[d_idx] = p_norm(query_QF[q_idx], data_NF[d_idx], 2)
+        # Sort nearest neighbors by L2 distance
+        sorted_neighbors = sorted(nearest_neighbors.items(), key=lambda x:x[1])
+        # Find the top k from closest to farthest
+        top_k = [dist[0] for dist in sorted_neighbors[0:K]]
+        # Add top k nearest neighbors to distance map
+        distance_map[q_idx] = [data_NF[k] for k in top_k]
+
+    # Create final three-dimensional array of k-nearest neighbors
+    neighbors = []
+    for i in range(len(query_QF)):
+        neighbors.append([query_QF[i], distance_map[i]])
+    return np.array(neighbors, dtype=object)

@@ -2,4 +2,5 @@
 Name: Hezekiah Branch
 I spent 2 hours on this problem (1 on Prob. 1 and 1 on Prob. 2)
 Completed assignment using Piazza and NumPy documentation
+Used sorted dictionary method from Tutorials Teacher tutorial
 Did not consult anyone for help.
