@@ -137,5 +137,9 @@ def calc_k_nearest_neighbors(data_NF, query_QF, K=1):
     # Create final three-dimensional array of k-nearest neighbors
     neighbors = []
     for i in range(len(query_QF)):
-        neighbors.append([query_QF[i], distance_map[i]])
+        grab_top_k = []
+        grab_top_k.append(query_QF[i])
+        for neighbor in distance_map[i]:
+            grab_top_k.append(neighbor)
+        neighbors.append(grab_top_k)
     return np.array(neighbors, dtype=object)
