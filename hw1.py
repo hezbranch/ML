@@ -130,16 +130,16 @@ def calc_k_nearest_neighbors(data_NF, query_QF, K=1):
         # Sort nearest neighbors by L2 distance
         sorted_neighbors = sorted(nearest_neighbors.items(), key=lambda x:x[1])
         # Find the top k from closest to farthest
-        top_k = [dist[0] for dist in sorted_neighbors[0:K]]
+        top_k = [dist[0] for dist in sorted_neighbors[0:K - 1]]
         # Add top k nearest neighbors to distance map
         distance_map[q_idx] = [data_NF[k] for k in top_k]
 
     # Create final three-dimensional array of k-nearest neighbors
     neighbors = []
-    for i in range(len(query_QF)):
+    for q_idx in range(len(query_QF)):
         grab_top_k = []
-        grab_top_k.append(query_QF[i])
-        for neighbor in distance_map[i]:
+        grab_top_k.append(query_QF[q_idx])
+        for neighbor in distance_map[q_idx]:
             grab_top_k.append(neighbor)
         neighbors.append(grab_top_k)
     return np.array(neighbors, dtype=object)
