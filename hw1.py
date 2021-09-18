@@ -141,4 +141,4 @@ def calc_k_nearest_neighbors(data_NF, query_QF, K=1):
         for neighbor in distance_map[q_idx]:
             grab_top_k.append(neighbor)
         neighbors.append(grab_top_k)
-    return np.array(neighbors, dtype=object)
+    return np.array(neighbors, dtype=float)
