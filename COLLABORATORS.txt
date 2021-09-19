@@ -1,7 +1,0 @@
-
-Name: Hezekiah Branch
-I spent 4 hours on this problem (1 on Prob. 1 and 3 on Prob. 2)
-Completed assignment using Piazza and NumPy documentation
-Used sorted dictionary method from Tutorials Teacher tutorial
-Solved issue with NumPy dtype for problem 2 via Stack Overflow
-Did not consult anyone for help.
