@@ -1,6 +1,5 @@
-# hw1.py
 # Author: Hezekiah Branch
-# Tufts CS 135 Intro ML
+# Tufts CS
 
 import numpy as np
 
