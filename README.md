@@ -4,7 +4,7 @@ A growing repository of machine learning code written during my time at the Tuft
 
 Tufts Graduate School of Engineering, Medford, MA 02155
 
-Fall 2021 to Spring 2022
+Fall 2021 to Spring 2023
 
 
 Projects I plan to add here:
